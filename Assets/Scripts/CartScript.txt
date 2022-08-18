@@ -1,0 +1,84 @@
+# CartScript
+## Documentation of functions
+
+### Vector
+Creating 2d vector 
+```sh
+vec (x,y) (x,y) (obj_name)            
+```
+Line 
+```sh
+line (x,y) (x,y) (obj_name)            
+```
+Triangle 
+```sh
+triangle (x,y) (x,y) (obj_name)            
+```
+Rectangle 
+```sh
+rectangle (x,y) (x,y) (obj_name)            
+```
+Circle 
+```sh
+circle (x,y) (x,y) (obj_name)            
+```
+Sin 
+```sh
+sin (x,y) (x,y) (obj_name)            
+```
+Cos 
+```sh
+cos (x,y) (x,y) (obj_name)            
+```
+Tan
+```sh
+tan (x,y) (x,y) (obj_name)            
+```
+Figure 
+```sh
+figure (x,y) (x,y) (obj_name)            
+```
+Angle 
+```sh
+angle (x,y) (x,y) (obj_name)            
+```
+F 
+```sh
+f (x,y) (x,y) (obj_name)            
+```
+Add
+```sh
+add (x,y) (x,y) (obj_name)            
+```
+Sub 
+```sh
+sub (x,y) (x,y) (obj_name)            
+```
+Mul 
+```sh
+mul (x,y) (x,y) (obj_name)            
+```
+Mov 
+```sh
+mov (x,y) (x,y) (obj_name)            
+```
+Cmp 
+```sh
+cmp (x,y) (x,y) (obj_name)            
+```
+Inc 
+```sh
+inc (x,y) (x,y) (obj_name)            
+```
+Dec 
+```sh
+dec (x,y) (x,y) (obj_name)            
+```
+Read
+```c#
+read (x,y) (x,y) (obj_name)            
+```
+Write
+```sh
+write (x,y) (x,y) (obj_name)            
+```
