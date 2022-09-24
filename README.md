@@ -6,11 +6,11 @@ Creating 2d vector
 ```sh
 vec (x,y) (x,y) (obj_name)            
 ```
-Line 
+### Line 
 ```sh
 line (m,x,b)            
 ```
-Triangle 
+### Triangle 
 ```sh
 triangle (x,y) (x,y) (x,y) (obj_name)            
 ```
@@ -18,67 +18,67 @@ Rectangle
 ```sh
 rectangle (x,y) (x,y) (obj_name)            
 ```
-Circle 
+### Circle 
 ```sh
 circle (x,y) (number) (obj_name)            
 ```
-Sin 
+### Sin 
 ```sh
 sin (x,y) (number) (number) (obj_name)            
 ```
-Cos 
+### Cos 
 ```sh
 cos (x,y) (number) (number) (obj_name)          
 ```
-Tan
+### Tan
 ```sh
 tan (x,y) (number) (number) (obj_name)           
 ```
-Figure 
+### Figure 
 ```sh
 figure (x,y) (number) (number) (obj_name)            
 ```
-Angle 
+### Angle 
 ```sh
 angle (x,y) (x,y) (x,y) (x,y) (obj_name)            
 ```
-F 
+### F 
 ```c#
 f (function_equation)            
 ```
-Add
+### Add
 ```sh
 add (number0,number1,...numberN,) (register)            
 ```
-Sub 
+### Sub 
 ```sh
 sub (number0,number1,...numberN,) (register)              
 ```
-Mul 
+### Mul 
 ```sh
 mul (number0,number1,...numberN,) (register)                 
 ```
-Mov 
+### Mov 
 ```sh
 mov (register) (register)           
 ```
-Cmp 
+### Cmp 
 ```sh
 cmp (number) (register) (register)             
 ```
-Inc 
+### Inc 
 ```sh
 inc (register)          
 ```
-Dec 
+### Dec 
 ```sh
 dec (register)         
 ```
-Read
+### Read
 ```c#
 read (path)          
 ```
-Write
+### Write
 ```sh
 write (path)          
 ```
