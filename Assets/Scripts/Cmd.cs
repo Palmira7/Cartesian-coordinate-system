@@ -17,6 +17,7 @@ public class Cmd : MonoBehaviour
     private string[] history;
     int histCount = 0;
     int histArrowCount = 0;
+    bool run = false;
 
     [SerializeField] private CartObjects CartObjts;
     private Queue<string> args;
@@ -36,6 +37,11 @@ public class Cmd : MonoBehaviour
 
     void Update()
     {
+        if (run == true)
+        {
+            UpdatesOn();
+        }
+
         if (Input.GetKeyUp(KeyCode.UpArrow) && InField.isFocused)
         {
             if (histCount > 0)
@@ -63,7 +69,7 @@ public class Cmd : MonoBehaviour
         }
     }
 
-    private void ParseOneLine(string linetoparse = "None")
+    public void ParseOneLine(string linetoparse = "None")
     {
         if (linetoparse != "None")
             InField.text = linetoparse;
@@ -105,6 +111,10 @@ public class Cmd : MonoBehaviour
 
         switch (args.Dequeue())
         {
+            case "point":
+                if (args.Count == 2)
+                    point(args.Dequeue(), args.Dequeue());
+                break;
             case "vec":
                 if (args.Count < 3)
                 {
@@ -188,10 +198,38 @@ public class Cmd : MonoBehaviour
                 if (args.Count == 1)
                     write(args.Dequeue());
                 break;
+            case "delete":
+                if (args.Count == 1)
+                    delete(args.Dequeue());
+                break;
             default:
                 //Error
                 break;
         }
+    }
+
+    public void UpdatesCheck()
+    {
+        run = !run;
+    }
+    public void UpdatesOn()
+    {
+
+        string readText = GameObject.Find("Main Camera/Console/Canvas/Roll/UpdateField").GetComponent<TMP_InputField>().text;
+        string[] cmds = readText.Split('\n');
+        foreach (string item in cmds)
+        {
+            if (item[0] == '#')
+            {
+                continue;
+            }
+            else
+            {
+                ParseOneLine(item);
+            }
+        }
+
+        
     }
 
     private float[] BracketParser(string bracket)
@@ -461,6 +499,17 @@ public class Cmd : MonoBehaviour
 
         line.CreateLine(result[0], result[1], name);
     }
+    private void point(string vec0, string name)
+    {
+        CartPoint point0 = new CartPoint();
+        float[] result = new float[8];
+        Vector2 p0;
+
+        result = BracketParser(vec0);
+        p0 = new Vector2(result[0], result[1]);
+
+        point0.CreatePoint(p0, name);
+    }
     private void triangle(string vec0, string vec1, string vec2, string name)
     {
         CartTriangle triangle = new CartTriangle();
@@ -567,6 +616,10 @@ public class Cmd : MonoBehaviour
     {
         CartFunc func = new CartFunc();
         func.DrawFunc(val0,name);
+    }
+    private void delete(string name)
+    {
+        Destroy(GameObject.Find(name));
     }
 
 }
