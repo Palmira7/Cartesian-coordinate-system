@@ -38,10 +38,10 @@ public class CartObjects
 
     #region LINE
     public Dictionary<string, CartLine> LineObjts;
-    public void AddLine(string id, float m, float x, float b)
+    public void AddLine(string id, float m, float x, float b, string name)
     {
         LineObjts.Add(id, new CartLine());
-        LineObjts[id].CreateLine(m,b);
+        LineObjts[id].CreateLine(m,b,name);
     }
     public void DeleteLine(string id)
     {

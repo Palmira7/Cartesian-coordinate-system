@@ -13,9 +13,9 @@ public class CartLine : MonoBehaviour
     public float m { get; set; }
     public float b { get; set; }
 
-    public void CreateLine(float m, float b)
+    public void CreateLine(float m, float b,string name)
     {
-        BornLine();
+        BornLine(name);
 
         linerender.positionCount = 0;
 
@@ -52,9 +52,9 @@ public class CartLine : MonoBehaviour
         return linerenderer;
     }
 
-    private void BornLine(string name = null)
+    private void BornLine(string name)
     {
-        GameObject line = new GameObject("line");
+        GameObject line = new GameObject(name);
         linerender = line.AddComponent<LineRenderer>();
         linerender = SetLinerenderParams(linerender);
         linerender.positionCount = 0;

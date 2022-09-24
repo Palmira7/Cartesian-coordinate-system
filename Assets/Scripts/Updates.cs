@@ -7,6 +7,6 @@ public class Updates : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 }

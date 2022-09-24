@@ -21,7 +21,6 @@ public class Cmd : MonoBehaviour
     [SerializeField] private CartObjects CartObjts;
     private Queue<string> args;
     private float[] Registers = new float[5];
-    //cax cbx cdx cbh cex 
 
     void Start()
     {
@@ -43,10 +42,7 @@ public class Cmd : MonoBehaviour
             {
                 if (histArrowCount+1 <= histCount)
                 {
-                    if (InField.text != String.Empty)
-                    {
-                        InField.text = history[histArrowCount++];
-                    }
+                   InField.text = history[histArrowCount++];
                 }
             }
         }
@@ -56,15 +52,12 @@ public class Cmd : MonoBehaviour
             {
                 if (histArrowCount > 0)
                 {
-                    if (InField.text != String.Empty)
-                    {
-                        InField.text = history[histArrowCount--];
-                    }
+                   InField.text = history[histArrowCount--];
                 }
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Return))
+        if (Input.GetKeyUp(KeyCode.Return) && InField.text != String.Empty)
         {
             ParseOneLine();
         }
@@ -82,7 +75,7 @@ public class Cmd : MonoBehaviour
         InHistoryField.text = InField.text + "\n";
 
         string currentword = "";
-
+        int all = 0;
         args = new Queue<string>();
         //0 element is always a keyword
 
@@ -96,6 +89,7 @@ public class Cmd : MonoBehaviour
 
             if (InField.text[i] == '(' || InField.text[i] == ')')
             {
+
                 if (currentword != String.Empty)
                     args.Enqueue(currentword);
 
@@ -117,63 +111,82 @@ public class Cmd : MonoBehaviour
                     Debug.Log("ERROR");
                     break;
                 }
-                vec(args.Dequeue(), args.Dequeue(), args.Dequeue());
+                if(args.Count == 3)
+                    vec(args.Dequeue(), args.Dequeue(), args.Dequeue());
                 break;
             case "line":
-                line(args.Dequeue());
+                if(args.Count == 2)
+                    line(args.Dequeue(),args.Dequeue());
                 break;
             case "triangle":
-                triangle(args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue());
+                if(args.Count == 4)
+                    triangle(args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue());
                 break;
             case "rectangle":
                 break;
             case "circle":
-                circle(args.Dequeue(), args.Dequeue(), args.Dequeue());
+                if (args.Count == 3)
+                    circle(args.Dequeue(), args.Dequeue(), args.Dequeue());
                 break;
             case "sin":
-                sin(args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue());
+                if (args.Count == 4)
+                    sin(args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue());
                 break;
             case "cos":
-                cos(args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue());
+                if (args.Count == 4)
+                    cos(args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue());
                 break;
             case "tan":
-                tan(args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue());
+                if (args.Count == 4)
+                    tan(args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue());
                 break;
             case "figure":
-                figure(args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue());
+                if (args.Count == 4)
+                    figure(args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue());
                 break;
             case "angle":
-                angle(args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue());
+                if (args.Count == 5)
+                    angle(args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue(), args.Dequeue());
                 break;
             case "f":
-                func(args.Dequeue());
+                if (args.Count == 2)
+                    func(args.Dequeue(),args.Dequeue());
                 break;
             case "add":
-                add(args.Dequeue(), args.Dequeue());
+                if (args.Count == 2)
+                    add(args.Dequeue(), args.Dequeue());
                 break;
             case "sub":
-                sub(args.Dequeue(), args.Dequeue());
+                if (args.Count == 2)
+                    sub(args.Dequeue(), args.Dequeue());
                 break;
             case "mul":
-                mul(args.Dequeue(), args.Dequeue());
+                if (args.Count == 2)
+                    mul(args.Dequeue(), args.Dequeue());
                 break;
             case "mov":
-                mov(args.Dequeue(), args.Dequeue());
+                if (args.Count == 2)
+                    mov(args.Dequeue(), args.Dequeue());
                 break;
             case "cmp":
-                cmp(args.Dequeue(), args.Dequeue(), args.Dequeue());
+                if (args.Count == 3)
+                    cmp(args.Dequeue(), args.Dequeue(), args.Dequeue());
                 break;
             case "inc":
-                inc(args.Dequeue());
+                if (args.Count == 1)
+                    inc(args.Dequeue());
                 break;
             case "dec":
-                dec(args.Dequeue());
+                if (args.Count == 1)
+                    dec(args.Dequeue());
                 break;
             case "read":
-                read(args.Dequeue());
+                if (args.Count == 1)
+                    read(args.Dequeue());
                 break;
             case "write":
-                write(args.Dequeue());
+                if (args.Count == 1)
+                    write(args.Dequeue());
                 break;
             default:
                 //Error
@@ -439,14 +452,14 @@ public class Cmd : MonoBehaviour
 
         vector.CreateVec(new Vector2(ParsedVec1.x, ParsedVec1.y), new Vector2(ParsedVec2.x, ParsedVec2.y), name);
     }
-    private void line(string args)
+    private void line(string args, string name)
     {
         CartLine line = new CartLine();
         float[] result = new float[8];
 
         result = BracketParser(args);
 
-        line.CreateLine(result[0], result[1]);
+        line.CreateLine(result[0], result[1], name);
     }
     private void triangle(string vec0, string vec1, string vec2, string name)
     {
@@ -550,10 +563,10 @@ public class Cmd : MonoBehaviour
         circle.CreateCircle(hk, r, name);
     }
 
-    private void func(string val0)
+    private void func(string val0,string name)
     {
         CartFunc func = new CartFunc();
-        func.DrawFunc(val0);
+        func.DrawFunc(val0,name);
     }
 
 }

@@ -2,17 +2,17 @@
 ## Documentation of functions
 
 ### Vector
-Creating 2d vector 
+Creating 2d vector
 ```sh
 vec (x,y) (x,y) (obj_name)            
 ```
 Line 
 ```sh
-line (x,y) (x,y) (obj_name)            
+line (m,x,b)            
 ```
 Triangle 
 ```sh
-triangle (x,y) (x,y) (obj_name)            
+triangle (x,y) (x,y) (x,y) (obj_name)            
 ```
 Rectangle 
 ```sh
@@ -20,65 +20,65 @@ rectangle (x,y) (x,y) (obj_name)
 ```
 Circle 
 ```sh
-circle (x,y) (x,y) (obj_name)            
+circle (x,y) (number) (obj_name)            
 ```
 Sin 
 ```sh
-sin (x,y) (x,y) (obj_name)            
+sin (x,y) (number) (number) (obj_name)            
 ```
 Cos 
 ```sh
-cos (x,y) (x,y) (obj_name)            
+cos (x,y) (number) (number) (obj_name)          
 ```
 Tan
 ```sh
-tan (x,y) (x,y) (obj_name)            
+tan (x,y) (number) (number) (obj_name)           
 ```
 Figure 
 ```sh
-figure (x,y) (x,y) (obj_name)            
+figure (x,y) (number) (number) (obj_name)            
 ```
 Angle 
 ```sh
-angle (x,y) (x,y) (obj_name)            
+angle (x,y) (x,y) (x,y) (x,y) (obj_name)            
 ```
 F 
-```sh
-f (x,y) (x,y) (obj_name)            
+```c#
+f (function_equation)            
 ```
 Add
 ```sh
-add (x,y) (x,y) (obj_name)            
+add (number0,number1,...numberN,) (register)            
 ```
 Sub 
 ```sh
-sub (x,y) (x,y) (obj_name)            
+sub (number0,number1,...numberN,) (register)              
 ```
 Mul 
 ```sh
-mul (x,y) (x,y) (obj_name)            
+mul (number0,number1,...numberN,) (register)                 
 ```
 Mov 
 ```sh
-mov (x,y) (x,y) (obj_name)            
+mov (register) (register)           
 ```
 Cmp 
 ```sh
-cmp (x,y) (x,y) (obj_name)            
+cmp (number) (register) (register)             
 ```
 Inc 
 ```sh
-inc (x,y) (x,y) (obj_name)            
+inc (register)          
 ```
 Dec 
 ```sh
-dec (x,y) (x,y) (obj_name)            
+dec (register)         
 ```
 Read
 ```c#
-read (x,y) (x,y) (obj_name)            
+read (path)          
 ```
 Write
 ```sh
-write (x,y) (x,y) (obj_name)            
+write (path)          
 ```
